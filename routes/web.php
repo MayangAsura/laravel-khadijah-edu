@@ -58,4 +58,5 @@ Route::get('pengajar/delete_permanent/{id?}', 'PengajarController@delete_permane
 Route::resource('pengajar', 'PengajarController'); 
 
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');

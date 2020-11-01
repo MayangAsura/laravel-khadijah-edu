@@ -37,7 +37,7 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="active">
                         <a href="{{url('home')}} "> <i class="menu-icon fa fa-dashboard"></i>Home </a>
                     </li>
                     <li>
@@ -100,17 +100,57 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Authentication Links -->
+                            @guest
+                                {{ __('You have to login first!') }}
+                            @else
+                                {{-- <li class="nav-item dropdown"> --}}
+                                  
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                        <img class="user-avatar rounded-circle" src="{{ asset('style/images/admin.jpg')}} " alt="User Avatar">
+                                    </a>
+                             
+                                    <div class="user-menu dropdown-menu">
+                                        <a class="nav-link" href="#"><i class="fa fa-cog"></i>Setting</a>
+                                        <a class="nav-link" href="{{ route('logout')}} " 
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-power-off"></i>Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                    {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a> --}}
+    
+                                    {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div> --}}
+                                {{-- </li> --}}
+                            @endguest
+                        </ul>
+
+                        {{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/admin.jpg')}} " alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
                                 <a class="nav-link" href="#"><i class="fa fa-cog"></i>Setting</a>
                                 <a class="nav-link" href="#"><i class="fa fa-power-off"></i>Logout</a>
-                        </div>
+                        </div> --}}
                     </div>
 
-                    <div class="language-select dropdown" id="language-select">
+                    {{-- <div class="language-select dropdown" id="language-select">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-us"></i>
                         </a>
@@ -128,7 +168,7 @@
                                 <i class="flag-icon flag-icon-it"></i>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

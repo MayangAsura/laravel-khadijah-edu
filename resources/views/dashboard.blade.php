@@ -27,6 +27,11 @@
 @section('content')
     <div class="content mt-3">
         <div class="animated fadeIn">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             ISI HOME
         </div>
     </div>
